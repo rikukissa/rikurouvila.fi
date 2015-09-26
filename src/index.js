@@ -1,4 +1,6 @@
-import React from 'react';
-import { App } from './App';
+import './global.styl';
 
-React.render(<App />, document.getElementById('root'));
+import React from 'react';
+import { App } from './components/App';
+
+React.render(<App />, document.body);
