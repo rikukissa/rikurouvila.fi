@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import AnimationFrame from 'animation-frame';
 
 const FRAME_RATE = 60;
@@ -8,12 +7,13 @@ export default function AnimatedComponent(component) {
 
   const animationFrame = new AnimationFrame(FRAME_RATE);
   let lastTime;
-
+  let cancelled;
 
   const animation = {
     _loop() {
       animationFrame.request((time) => {
-        if(this.cancelled) {
+
+        if(cancelled) {
           return;
         }
 
@@ -26,13 +26,13 @@ export default function AnimatedComponent(component) {
       });
     },
     cancelAnimation() {
-      this.cancelled = true;
+      cancelled = true;
     },
     componentDidMount() {
-      this.cancelled = false;
+      cancelled = false;
       this._loop();
     },
-    componentDidUnmount() {
+    componentWillUnmount() {
       this.cancelAnimation();
     }
   };
