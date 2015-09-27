@@ -5,10 +5,10 @@ import animatedComponent from 'mixins/animatedComponent';
 import Stars from 'components/Stars';
 
 export default React.createClass(animatedComponent({
-  getInitialState() {
+  getInitialState() {
     return {
       progress: 0
-    }
+    };
   },
   update(delta) {
     this.setState({
@@ -23,10 +23,11 @@ export default React.createClass(animatedComponent({
     return (
       <div className={styles.main} style={style}>
         {
-          range(4).map((_, i) => <div key={i} className={styles.stripe}></div>)
+          range(4).map((i) =>
+            <div key={i} className={styles.stripe}></div>)
         }
         <Stars progress={this.state.progress} />
       </div>
     );
   }
-}))
+}));

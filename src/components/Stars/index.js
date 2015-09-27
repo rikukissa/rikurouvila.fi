@@ -3,14 +3,16 @@ import styles from './index.styl';
 import range from 'lodash.range';
 import classNames from 'classnames';
 import animatedComponent from 'mixins/animatedComponent';
+import random from 'utils/random';
 
-const FOLLOWER_STARS = 25;
-const MAX_CONCURRENT_STARS = 75 + FOLLOWER_STARS;
+const BOUNCING_STARS = 25;
+const SHOOTING_STARS = 50;
 
 const GRAVITY = 1;
 const STRIPE_WIDTH = 100;
 const STAR_RADIUS = 32 / 2;
 const STARS_PER_TICK = 1;
+
 const height = window.innerHeight;
 
 function updateFollowerStar(progress, delta, star) {
@@ -19,6 +21,8 @@ function updateFollowerStar(progress, delta, star) {
 
   if(progress === 1) {
     star.isFollower = false;
+    star.vy = Math.abs(star.vy) * -3;
+    star.vx *= 3;
     return star;
   }
 
@@ -45,6 +49,7 @@ function updateStar(progress, delta, star) {
   star.vy += GRAVITY * delta;
 
   if(progress < 1 && !isInViewport(progress, star)) {
+    // Set all values to initial
     return {...star, ...createStar(star.id)};
   }
 
@@ -67,27 +72,27 @@ function createStar(id) {
 }
 
 export default React.createClass(animatedComponent({
-  getInitialState() {
+  getInitialState() {
     return {
-      stars: range(FOLLOWER_STARS).map((_, i) => ({ ...createStar(i),
-        x: i * -(STRIPE_WIDTH / FOLLOWER_STARS),
+      stars: range(BOUNCING_STARS).map((i) => ({ ...createStar(i),
+        x: i * -(STRIPE_WIDTH / BOUNCING_STARS),
         y: -10 + 20 * Math.random(),
-        vx: -1 + Math.random() * 2,
-        vy: -8 + 16 * Math.random(),
+        vx: random(-0.5, 0.5),
+        vy: random(-8, 8),
         isFollower: true
       })),
-      nextId: FOLLOWER_STARS + 1
-    }
+      nextId: BOUNCING_STARS + 1
+    };
   },
-  shouldComponentUpdate(props, state) {
+  shouldComponentUpdate(props, state) {
     return state.stars !== this.state.stars;
   },
-  update(delta, worldTick) {
+  update(delta) {
 
     const progress = this.props.progress;
     const running = progress < 1;
 
-    const maxStarsReached = this.state.stars.length >= MAX_CONCURRENT_STARS;
+    const maxStarsReached = this.state.stars.length >= SHOOTING_STARS + BOUNCING_STARS;
 
     const canCreateStars = !maxStarsReached && running;
 
@@ -124,4 +129,4 @@ export default React.createClass(animatedComponent({
       </div>
     );
   }
-}))
+}));
