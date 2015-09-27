@@ -4,6 +4,7 @@ import range from 'lodash.range';
 import classNames from 'classnames';
 import animatedComponent from 'mixins/animatedComponent';
 import random from 'utils/random';
+import sign from 'math-sign';
 
 const BOUNCING_STARS = 25;
 const SHOOTING_STARS = 50;
@@ -27,7 +28,7 @@ function updateFollowerStar(progress, delta, star) {
   }
 
   if(Math.abs(star.y) > 10) {
-    star.y = Math.sign(star.y) * 10;
+    star.y = sign(star.y) * 10;
     star.vy *= -1;
   }
 
