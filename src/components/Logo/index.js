@@ -6,8 +6,8 @@ export default class Logo extends Component {
     return (
       <div className={styles.main}>
         <div className={styles.container}>
-          <img src={require('file!assets/images/riku.png')} />
-          <img src={require('file!assets/images/rouvila.png')} />
+          <img src={require('url!assets/images/riku.png')} />
+          <img src={require('url!assets/images/rouvila.png')} />
         </div>
       </div>
     );
