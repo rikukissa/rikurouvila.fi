@@ -11,6 +11,9 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/static/'
   },
+  resolve: {
+    modulesDirectories: ['./src', './node_modules']
+  },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
@@ -33,7 +36,9 @@ module.exports = {
       test: /\.styl$/,
       loaders: [
         'style-loader',
-        'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!stylus'
+        'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
+        'autoprefixer-loader',
+        'stylus'
       ]
     }]
   }

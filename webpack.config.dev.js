@@ -1,37 +1,12 @@
-var path = require('path');
 var webpack = require('webpack');
+var assign = require('lodash.assign');
+var config = require('./webpack.config.prod');
 
-module.exports = {
+module.exports = assign(config, {
   devtool: 'eval',
-  entry: [
-    'webpack-hot-middleware/client',
-    './src/index'
-  ],
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
-  },
+  entry: ['webpack-hot-middleware/client'].concat(config.entry),
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
-  ],
-  resolve: {
-    modulesDirectories: ['./src', './node_modules']
-  },
-  module: {
-    loaders: [{
-      test: /\.js$/,
-      loaders: ['babel'],
-      include: path.join(__dirname, 'src')
-    }, {
-      test: /\.styl$/,
-      loaders: [
-        'style-loader',
-        'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
-        'autoprefixer-loader',
-        'stylus'
-      ]
-    }]
-  }
-};
+  ]
+});
