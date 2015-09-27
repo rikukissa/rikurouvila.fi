@@ -15,7 +15,7 @@ cd out
 git init
 
 # inside this git repo we'll pretend to be a new user
-git config user.name "Riku Rouvila"
+git config user.name "Travis CI"
 git config user.email "riku.rouvila@gmail.com"
 
 # The first and only commit to this new Git repo contains all the
