@@ -7,11 +7,9 @@ mkdir out;
 
 # run our compile script, discussed above
 npm run build
-cp -r dist out/
-cp index.html out/
 
 # go to the out directory and create a *new* Git repo
-cd out
+cd dist
 git init
 
 # inside this git repo we'll pretend to be a new user
