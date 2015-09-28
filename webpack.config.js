@@ -27,7 +27,6 @@ var plugins = [
   new ExtractTextPlugin('css/styles.css'),
   new ReactToHtmlPlugin('index.html', 'bundle.js', {
     template: function(data) {
-      console.log(data);
       return fs.readFileSync('./index.html').toString()
         .replace('<body>', '<body>' + data.html);
     }
