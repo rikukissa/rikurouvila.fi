@@ -1,6 +1,12 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var styleLoaders = [
+  'style-loader',
+  'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
+  'autoprefixer-loader'
+];
+
 module.exports = {
   devtool: 'source-map',
   entry: [
@@ -33,13 +39,14 @@ module.exports = {
       loaders: ['babel'],
       include: path.join(__dirname, 'src')
     }, {
+      test: /\.less$/,
+      loaders: styleLoaders.concat(['less-loader'])
+    }, {
       test: /\.styl$/,
-      loaders: [
-        'style-loader',
-        'css-loader?modules&importLoaders=2&localIdentName=[name]__[local]___[hash:base64:5]',
-        'autoprefixer-loader',
-        'stylus'
-      ]
+      loaders: styleLoaders.concat(['stylus?paths=node_modules&include css=true'])
+    }, {
+      test: /\.(otf|eot|svg|ttf|woff|woff2)/,
+      loader: 'url-loader?limit=100000'
     }]
   }
 };
