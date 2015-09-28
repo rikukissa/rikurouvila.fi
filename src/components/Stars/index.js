@@ -14,7 +14,7 @@ const STRIPE_WIDTH = 100;
 const STAR_RADIUS = 32 / 2;
 const STARS_PER_TICK = 1;
 
-const height = window.innerHeight;
+const height = typeof window !== 'undefined' ? window.innerHeight : 0;
 
 function updateFollowerStar(progress, delta, star) {
   star.y += star.vy * delta;

@@ -1,9 +1,14 @@
-import AnimationFrame from 'animation-frame';
-
 const FRAME_RATE = 60;
 const WORLD_SPEED = 1000 / 30;
 
 export default function AnimatedComponent(component) {
+
+  if(typeof window === 'undefined') {
+    return component;
+  }
+
+  // FIXME - unable to 'import' since it uses window and we don't want that when rendering to string
+  const AnimationFrame = require('animation-frame');
 
   const animationFrame = new AnimationFrame(FRAME_RATE);
   let lastTime;
