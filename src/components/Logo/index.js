@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import styles from './index.styl';
-
-export default class Logo extends Component {
+import CSSModules from 'react-css-modules';
+class Logo extends Component {
   render() {
     return (
-      <div className={styles.main}>
-        <div className={styles.container}>
+      <div styleName='main'>
+        <div styleName='container'>
           <img src={require('url!assets/images/riku.png')} />
           <img src={require('url!assets/images/rouvila.png')} />
         </div>
@@ -13,3 +13,5 @@ export default class Logo extends Component {
     );
   }
 }
+
+export default CSSModules(Logo, styles);

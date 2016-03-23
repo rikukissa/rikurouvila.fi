@@ -4,27 +4,31 @@ import Logo from 'components/Logo';
 import Stripe from 'components/Stripe';
 import Icon from 'components/Icon';
 
-export class App extends Component {
+import CSSModules from 'react-css-modules';
+
+class App extends Component {
   render() {
     return (
-      <div className={styles.app}>
+      <div styleName='app'>
         <Logo />
         <Stripe />
-        <div className={styles.contacts}>
-          <a className={styles.link} href='https://github.com/rikukissa'>
-            <Icon className={styles.icon} icon='github' />
+        <div styleName='contacts'>
+          <a styleName='link' href='https://github.com/rikukissa'>
+            <Icon styleName='icon' icon='github' />
           </a>
-          <a className={styles.link} href='https://twitter.com/rikurouvila'>
-            <Icon className={styles.icon} icon='twitter' />
+          <a styleName='link' href='https://twitter.com/rikurouvila'>
+            <Icon styleName='icon' icon='twitter' />
           </a>
-          <a className={styles.link} href='https://www.facebook.com/riku.rouvila'>
-            <Icon className={styles.icon} icon='facebook' />
+          <a styleName='link' href='https://www.facebook.com/riku.rouvila'>
+            <Icon styleName='icon' icon='facebook' />
           </a>
-          <a className={styles.link} href='http://www.linkedin.com/in/rikurouvila'>
-            <Icon className={styles.icon} icon='linkedin' />
+          <a styleName='link' href='http://www.linkedin.com/in/rikurouvila'>
+            <Icon styleName='icon' icon='linkedin' />
           </a>
         </div>
       </div>
     );
   }
 }
+
+export default CSSModules(App, styles);
