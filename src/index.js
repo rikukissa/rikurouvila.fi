@@ -1,11 +1,12 @@
 import './global.styl';
 
 import React from 'react';
-import { App } from './components/App';
+import { render } from 'react-dom';
 
+import App from './components/App';
 
 if(typeof document !== 'undefined') {
-  React.render(<App />, document.body);
+  render(<App />, document.getElementById('root'));
 }
 
 export {App as default};
