@@ -4,5 +4,5 @@ node_js:
 - '4.0'
 env:
   global:
-  - GH_REF: github.com/rikukissa/rikukissa.github.io.git
-  - secure: WF2C5fLVXtQqNdlm930ZGLkt7AiE8fs+FZNPn4Rek/sKCyp6haPOREgHWhhYinkdoejB7XmkJ8XldiFKbAaQimfK+1NPNUv2dkdMY2Wy/oBoBI8xJ5SAeTHeBXvnrjTo9Ex/dIBju6V5oGjxDHlrcSNA3Aa2wyiBdAjW61ZV9oD8pbN9Fhe8+S3Z5MwtStcam43hkrQlONM2zHW+EjNmVc0M52UlFjfR3wKRDDqh4o2XOfX9l/eDGTA6mlpLKqBan1DZgXuQtWGB59nCj656erPaRZmLaSYdVhgvLt8qLojCfN/LQXsGRWMcsAwbg6/wBrTZ/i8iBgxGgjtPW/YS+9aPhOx10jfVEPbs7yKHYpKJdDJzIx/uvpul+2y9HOc5Rrdi03qCn8OStja/GPJX9gJZprS5ZBy8uT4byEnCHMczTnAwEW4SiJ/I6HA5yKo4lYtidy6HGoLHSZGOQrJapWV+/EgLQadSw9iagOz4vKN/aO4PaPeL1BpaeVnNQK4VTUak9BKqE8nlNXdT50L0hIm0samx9zFK3ELSwgo/1yLVDR0a9hIsojWeAGKMhlhq18uXTv4fHOzWxRlSg2VJri48+6d+7mpPkeObBw+4hB9H7B7YkKCv4lb5uFGAzWNfl0aZWR/2BfFWOYdaNfqbiMoXAvbMe8x3dn0VUs+lsrU=
+  - ENCRYPTION_LABEL: "334aaeb788ae"
+  - COMMIT_AUTHOR_EMAIL: "riku.rouvila@gmail.com"
