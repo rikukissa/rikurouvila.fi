@@ -28,7 +28,7 @@ var plugins = [
   new ReactToHtmlPlugin('index.html', 'bundle.js', {
     template: function(data) {
       return fs.readFileSync('./index.html').toString()
-        .replace('<body>', '<body>' + data.html);
+        .replace('<div id="root">', '<div id="root">' + data.html);
     }
   })
 ];
